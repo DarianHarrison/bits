@@ -139,46 +139,67 @@ fn main() {
 
     println!("{:?}", "// MODULAR/WRAPPING SHIFT LEFT: 150u8 << 25");
     // mask removes any high-order bits that would cause the shift to exceed the bitwidth of the type
-    println!("{:b}",150u8);
-    println!("{:b}",150u8.wrapping_shl(25));
+    println!("{:08b}",150u8);
+    println!("{:08b}",150u8.wrapping_shl(25));
 
     println!("{:?}", "MODULAR/WRAPPING SHIFT RIGHT: 150u8 >> 25");
     //where mask removes any high-order bits of rhs that would cause the shift to exceed the bitwidth of the type.
-    println!("{:b}",150u8);
-    println!("{:b}",150u8.wrapping_shr(25));
+    println!("{:08b}",150u8);
+    println!("{:08b}",150u8.wrapping_shr(25));
+
+/*bitand_assign
+&=
+
+bitor_assign
+|=
+
+bitxor_assign
+^=
+
+div
+/
+
+div_assign
+/=
+
+rem_assign
+%=
+
+mul
+Performs the * operation
+
+mul_assign
+*=
+
+shl_assign
+<<=
+
+shl_assign
+<<=
+
+shr_assign
+>>=
+
+sub_assign
+-=*/
 
 
+abs_diff
+100u8.abs_diff(80)
+100u8.abs_diff(110)
 
 
-/*abs_diff
-Computes the absolute difference between self and other.
-#![feature(int_abs_diff)]
-assert_eq!(100u8.abs_diff(80), 20u8);
-assert_eq!(100u8.abs_diff(110), 10u8);
-
-
-pow
-Raises self to the power of exp, using exponentiation by squaring.
-assert_eq!(2u8.pow(5), 32);
-
- div_floor
-div_ceil
-
- next_multiple_of
- Calculates the smallest value greater than or equal to self that is a multiple of rhs.
- #![feature(int_roundings)]
-assert_eq!(16_u8.next_multiple_of(8), 16);
-assert_eq!(23_u8.next_multiple_of(8), 24);
+POWER OF 2
+// Raises self to the power of exp, using exponentiation by squaring.
+2u8.pow(5)
 
 
 is_power_of_two
-Returns true if and only if self == 2^k for some k.
+// Returns true if and only if self == 2^k for some k.
 assert!(16u8.is_power_of_two());
-assert!(!10u8.is_power_of_two());
 
 next_power_of_two
-Returns the smallest power of two greater than or equal to self.
-When return value overflows (i.e., self > (1 << (N-1)) for type uN), it panics in debug mode and the return value is wrapped to 0 in release mode (the only situation in which method can return 0).
+// Returns the smallest power of two greater than or equal to self.
 assert_eq!(2u8.next_power_of_two(), 2);
 assert_eq!(3u8.next_power_of_two(), 4);
 
@@ -188,6 +209,54 @@ assert_eq!(3u8.next_power_of_two(), 4);
 #![feature(wrapping_next_power_of_two)]
 assert_eq!(2u8.wrapping_next_power_of_two(), 2);
 assert_eq!(3u8.wrapping_next_power_of_two(), 4);
-assert_eq!(u8::MAX.wrapping_next_power_of_two(), 0);*/
+assert_eq!(u8::MAX.wrapping_next_power_of_two(), 0);
+
+
+u8::MIN
+Returns the smallest value that can be represented by this integer type.
+u8::MIN
+
+u8::MAX 
+Returns the largest value that can be represented by this integer type.
+u8::MAX
+
+    /////////////////////
+    // // log2
+    // //Returns the base 2 logarithm of the number, rounded down.
+    // #![feature(int_log)]
+    // assert_eq!(2u8.log2(), 1);
+
+    // // log10
+    // // Returns the base 10 logarithm of the number, rounded down.
+    // #![feature(int_log)]
+    // assert_eq!(10u8.log10(), 1);
+
+
+    // // Saturating integer addition.
+    // // Computes self + rhs, saturating at the numeric bounds instead of overflowing.
+    // assert_eq!(100u8.saturating_add(1), 101);
+    // assert_eq!(u8::MAX.saturating_add(127), u8::MAX);
+
+    // // Saturating integer subtraction. 
+    // // Computes self - rhs, saturating at the numeric bounds instead of overflowing.
+    // assert_eq!(100u8.saturating_sub(27), 73);
+    // assert_eq!(13u8.saturating_sub(127), 0);
+
+
+forward
+Returns the value that would be obtained by taking the successor of self count times.
+forward(start: u8, n: usize) -> u8
+
+backward
+Returns the value that would be obtained by taking the predecessor of self count times.
+backward(start: u8, n: usize) -> u8
+
+steps_between(start: &u8, end: &u8) -> Option<usize>
+Returns the number of successor steps required to get from start to end.
+
+sum<I>(iter: I) -> u8
+Method which takes an iterator and generates Self from the elements by “summing up” the items.
+
+
 
 }
