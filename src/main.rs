@@ -114,42 +114,43 @@ fn main() {
 
     // WRAPPING ADDITION, modular addition
     println!("{:?}", "// WRAPPING ADDITION: 200u8 + 256u8");
+    println!("{:08b}", 200u8);
     println!("{:08b}", 200u8.wrapping_add(u8::MAX));
 
     // WRAPPING SUBSTRACTION, modular difference
     println!("{:?}", "// WRAPPING SUBSTRACTION: 100u8 - 256u8");
+    println!("{:08b}", 100u8);
     println!("{:08b}", 100u8.wrapping_sub(u8::MAX));
 
     // WRAPPING MULTIPLICATION, modular multiply
     println!("{:?}", "// WRAPPING MULTIPLICATION: 25u8 * 12u8 ");
+    println!("{:08b}", 25u8);
     println!("{:08b}", 25u8.wrapping_mul(12));
 
     // WRAPPING REMAINDER, modular modulo
     println!("{:?}", "// WRAPPING REMAINDER 100u8 % 10u8");
+    println!("{:08b}", 100u8);
     println!("{:08b}", 100u8.wrapping_rem(10));
 
     // WRAPPING EXPONENTIATION, modular power
-    println!("{:?}", "// WRAPPING EXPONENTIATION 3u8.pow(8u8)");
+    println!("{:?}", "// WRAPPING EXPONENTIATION 3u8.pow(6u8)");
+    println!("{:08b}", 3u8);
     println!("{:08b}", 3u8.wrapping_pow(6));
 
-    println!("{:?}", "// MODULAR/WRAPPING SHIFT LEFT: 1u8 << 128");
+    println!("{:?}", "// MODULAR/WRAPPING SHIFT LEFT: 150u8 << 25");
     // mask removes any high-order bits that would cause the shift to exceed the bitwidth of the type
-    1u8.wrapping_shl(128);
-    println!("{:?}", "// MODULAR/WRAPPING SHIFT LEFT: 1u8 << 7");
-    // mask removes any high-order bits that would cause the shift to exceed the bitwidth of the type
-    1u8.wrapping_shl(7);
+    println!("{:b}",150u8);
+    println!("{:b}",150u8.wrapping_shl(25));
 
-    println!("{:?}", "MODULAR/WRAPPING SHIFT RIGHT: 128u8 >> 7");
+    println!("{:?}", "MODULAR/WRAPPING SHIFT RIGHT: 150u8 >> 25");
     //where mask removes any high-order bits of rhs that would cause the shift to exceed the bitwidth of the type.
-    128u8.wrapping_shr(7);
-    println!("{:?}", "MODULAR/WRAPPING SHIFT RIGHT: 128u8 >> 128");
-    //where mask removes any high-order bits of rhs that would cause the shift to exceed the bitwidth of the type.
-    128u8.wrapping_shr(128);
+    println!("{:b}",150u8);
+    println!("{:b}",150u8.wrapping_shr(25));
 
 
 
 
-abs_diff
+/*abs_diff
 Computes the absolute difference between self and other.
 #![feature(int_abs_diff)]
 assert_eq!(100u8.abs_diff(80), 20u8);
@@ -187,6 +188,6 @@ assert_eq!(3u8.next_power_of_two(), 4);
 #![feature(wrapping_next_power_of_two)]
 assert_eq!(2u8.wrapping_next_power_of_two(), 2);
 assert_eq!(3u8.wrapping_next_power_of_two(), 4);
-assert_eq!(u8::MAX.wrapping_next_power_of_two(), 0);
+assert_eq!(u8::MAX.wrapping_next_power_of_two(), 0);*/
 
 }
