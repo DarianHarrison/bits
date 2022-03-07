@@ -107,46 +107,28 @@ fn main() {
     println!("{:?}", &op_1);
 
 
-assert_eq!(u8::MAX.saturating_pow(2), u8::MAX);
+    // useful
+    println!("{:?}", "MODULAR/WRAPPING ADDITION: 200u8 + 256u8");
+    println!("{:08b}", 200u8.wrapping_add(u8::MAX));
 
+    println!("{:?}", "MODULAR/WRAPPING SUBSTRACTION: 100u8 - 256u8");
+    println!("{:08b}", 100u8.wrapping_sub(u8::MAX));
 
+    println!("{:?}", "MODULAR/WRAPPING MULTIPLICATION: 25u8 * 12u8 ");
+    println!("{:08b}", 25u8.wrapping_mul(12));
 
+    println!("{:?}", "MODULAR/WRAPPING REMAINDER 100u8 % 10u8");
+    println!("{:08b}", 100u8.wrapping_rem(10));
 
+    println!("{:?}", "MODULAR/WRAPPING EXPONENTIATION 3u8.pow(8u8)");
+    println!("{:08b}", 3u8.wrapping_pow(6));
 
-// useful
+    println!("{:?}", "MODULAR/WRAPPING SHIFT LEFT");
+    // mask removes any high-order bits that would cause the shift to exceed the bitwidth of the type
 
-Wrapping (modular) addition. Computes self + rhs, wrapping around at the boundary of the type.
-assert_eq!(200u8.wrapping_add(55), 255);
-assert_eq!(200u8.wrapping_add(u8::MAX), 199);
+    println!("{:?}", "MODULAR/WRAPPING SHIFT RIGHT");
+    //where mask removes any high-order bits of rhs that would cause the shift to exceed the bitwidth of the type.
 
-Wrapping (modular) subtraction. Computes self - rhs, wrapping around at the boundary of the type.
-assert_eq!(100u8.wrapping_sub(100), 0);
-assert_eq!(100u8.wrapping_sub(u8::MAX), 101);
-
-Wrapping (modular) multiplication. Computes self * rhs, wrapping around at the boundary of the type.
-assert_eq!(10u8.wrapping_mul(12), 120); 
-assert_eq!(25u8.wrapping_mul(12), 44);
-
-
-Wrapping (modular) division. 
-Computes self / rhs. Wrapped division on unsigned types is just normal division. There’s no way wrapping could ever happen. This function exists, so that all operations are accounted for in the wrapping operations.
-assert_eq!(100u8.wrapping_div(10), 10);
-
-
-Wrapping (modular) remainder. Computes self % rhs. Wrapped remainder calculation on unsigned types is just the regular remainder calculation. There’s no way wrapping could ever happen. This function exists, so that all operations are accounted for in the wrapping operations.
-assert_eq!(100u8.wrapping_rem(10), 0);
-
-Wrapping (modular) negation. Computes -self, wrapping around at the boundary of the type.
-Since unsigned types do not have negative equivalents all applications of this function will wrap (except for -0). For values smaller than the corresponding signed type’s maximum the result is the same as casting the corresponding signed value. Any larger values are equivalent to MAX + 1 - (val - MAX - 1) where MAX is the corresponding signed type’s maximum.
-assert_eq!(100i8.wrapping_neg(), -100);
-assert_eq!((-128i8).wrapping_neg(), -128);
-
-Wrapping (modular) exponentiation. Computes self.pow(exp), wrapping around at the boundary of the type.
-assert_eq!(3u8.wrapping_pow(5), 243);
-assert_eq!(3u8.wrapping_pow(6), 217);
-
-wrapping shift
-wrapping
 
 
 abs_diff
