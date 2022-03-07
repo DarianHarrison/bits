@@ -11,3 +11,5 @@ Cargo.lock
 src/main
 src/main.exe
 src/main.pdb
+*.exe
+*.pdb
