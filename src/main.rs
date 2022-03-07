@@ -2,7 +2,6 @@
 
 fn main() {
 
-
     // AND, minimizes
     let a: u8 = 12;
     let b: u8 = 7;
@@ -23,7 +22,7 @@ fn main() {
     println!("{:08b}", &b);
     println!("{:08b}", &op_1);
 
-    // XOR
+    // XOR, find bitwise magnets
     let a: u8 = 12;
     let b: u8 = 7;
     let op_1: u8 = a ^ b;
@@ -33,7 +32,7 @@ fn main() {
     println!("{:08b}", &b);
     println!("{:08b}", &op_1);
 
-    // NOT, inverts
+    // NOT, flip bits
     let b: u8 = 7;
     let op_1: u8 = !b;
 
@@ -41,7 +40,7 @@ fn main() {
     println!("{:08b}", &b);
     println!("{:08b}", &op_1);
 
-    // LEFT SHIFT
+    // LEFT SHIFT, larger number
     let a: u8 = 12;
     let op_1: u8 = a << 3;
 
@@ -49,7 +48,7 @@ fn main() {
     println!("{:08b}", &a);
     println!("{:08b}", &op_1);
 
-    // RIGHT SHIFT
+    // RIGHT SHIFT, smaller number 
     let a: u8 = 12;
     let op_1: u8 = a >> 3;
 
@@ -57,77 +56,96 @@ fn main() {
     println!("{:08b}", &a);
     println!("{:08b}", &op_1);
 
-
-    println!("{:?}", "// ROTATE LEFT 3");
-    let a: u8 = 7;
-    let op_1: u8 = a.rotate_left(3);
-    println!("{:08b}", &a);
-    println!("{:08b}", &op_1);
-
+    // ROTATE RIGT, clockwise movement
     println!("{:?}", "// ROTATE RIGHT 3");
     let a: u8 = 7;
     let op_1: u8 = a.rotate_right(3);
     println!("{:08b}", &a);
     println!("{:08b}", &op_1);
 
+    // ROTATE LEFT, counter-clockwise movement
+    println!("{:?}", "// ROTATE LEFT 3");
+    let a: u8 = 7;
+    let op_1: u8 = a.rotate_left(3);
+    println!("{:08b}", &a);
+    println!("{:08b}", &op_1);
+
+    // COUNT ONES, one cardinallity
     println!("{:?}", "// COUNT ONES");
     let a: u8 = 7;
     let op_1: u8 = a.count_ones() as u8;
     println!("{:08b}", &a);
     println!("{:?}", &op_1);
 
+    // COUNT ONES, zero cardinallity
     println!("{:?}", "// COUNT ZEROS");
     let a: u8 = 7;
     let op_1: u8 = a.count_zeros() as u8;
     println!("{:08b}", &a);
     println!("{:?}", &op_1);
 
+    // LEADING ZEROS, index of first ocurrence of 1, if any
     println!("{:?}", "// LEADING ZEROS");
     let a: u8 = 7;
     let op_1: u8 = a.leading_zeros() as u8;
     println!("{:08b}", &a);
     println!("{:?}", &op_1);
 
+    // LEADING ONES, index of first ocurrence of 0, if any
     println!("{:?}", "// LEADING ONES");
     let a: u8 = 7;
     let op_1: u8 = a.leading_ones() as u8;
     println!("{:08b}", &a);
     println!("{:?}", &op_1);
 
+    // TRAILING ZEROS, position of last ocurrence of 1, if any
     println!("{:?}", "// TRAILING ZEROS");
     let a: u8 = 7;
     let op_1: u8 = a.trailing_zeros() as u8;
     println!("{:08b}", &a);
     println!("{:?}", &op_1);
 
+    // TRAILING ONES, position of last ocurrence of 0, if any
     println!("{:?}", "// TRAILING ONES");
     let a: u8 = 7;
     let op_1: u8 = a.trailing_ones() as u8;
     println!("{:08b}", &a);
     println!("{:?}", &op_1);
 
-
-    // useful
-    println!("{:?}", "MODULAR/WRAPPING ADDITION: 200u8 + 256u8");
+    // WRAPPING ADDITION, modular addition
+    println!("{:?}", "// WRAPPING ADDITION: 200u8 + 256u8");
     println!("{:08b}", 200u8.wrapping_add(u8::MAX));
 
-    println!("{:?}", "MODULAR/WRAPPING SUBSTRACTION: 100u8 - 256u8");
+    // WRAPPING SUBSTRACTION, modular difference
+    println!("{:?}", "// WRAPPING SUBSTRACTION: 100u8 - 256u8");
     println!("{:08b}", 100u8.wrapping_sub(u8::MAX));
 
-    println!("{:?}", "MODULAR/WRAPPING MULTIPLICATION: 25u8 * 12u8 ");
+    // WRAPPING MULTIPLICATION, modular multiply
+    println!("{:?}", "// WRAPPING MULTIPLICATION: 25u8 * 12u8 ");
     println!("{:08b}", 25u8.wrapping_mul(12));
 
-    println!("{:?}", "MODULAR/WRAPPING REMAINDER 100u8 % 10u8");
+    // WRAPPING REMAINDER, modular modulo
+    println!("{:?}", "// WRAPPING REMAINDER 100u8 % 10u8");
     println!("{:08b}", 100u8.wrapping_rem(10));
 
-    println!("{:?}", "MODULAR/WRAPPING EXPONENTIATION 3u8.pow(8u8)");
+    // WRAPPING EXPONENTIATION, modular power
+    println!("{:?}", "// WRAPPING EXPONENTIATION 3u8.pow(8u8)");
     println!("{:08b}", 3u8.wrapping_pow(6));
 
-    println!("{:?}", "MODULAR/WRAPPING SHIFT LEFT");
+    println!("{:?}", "// MODULAR/WRAPPING SHIFT LEFT: 1u8 << 128");
     // mask removes any high-order bits that would cause the shift to exceed the bitwidth of the type
+    1u8.wrapping_shl(128);
+    println!("{:?}", "// MODULAR/WRAPPING SHIFT LEFT: 1u8 << 7");
+    // mask removes any high-order bits that would cause the shift to exceed the bitwidth of the type
+    1u8.wrapping_shl(7);
 
-    println!("{:?}", "MODULAR/WRAPPING SHIFT RIGHT");
+    println!("{:?}", "MODULAR/WRAPPING SHIFT RIGHT: 128u8 >> 7");
     //where mask removes any high-order bits of rhs that would cause the shift to exceed the bitwidth of the type.
+    128u8.wrapping_shr(7);
+    println!("{:?}", "MODULAR/WRAPPING SHIFT RIGHT: 128u8 >> 128");
+    //where mask removes any high-order bits of rhs that would cause the shift to exceed the bitwidth of the type.
+    128u8.wrapping_shr(128);
+
 
 
 
