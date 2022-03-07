@@ -78,6 +78,58 @@ fn main() {
     println!("{:08b}", &op_1);
 
 
+    // ROTATE LEFT
+    let a: u8 = 7;
+    let op_1: u8 = a.rotate_left();
+    println!("{:08b}", &a);
+    println!("{:08b}", &op_1);
+
+    // ROTATE RIGHT
+    let a: u8 = 7;
+    let op_1: u8 = a.rotate_right();
+    println!("{:08b}", &a);
+    println!("{:08b}", &op_1);
+
+
+    // COUNT ONES
+    let a: u8 = 7;
+    let op_1: u8 = a.count_ones();
+    println!("{:08b}", &a);
+    println!("{:?}", &op_1);
+
+    // COUNT ZEROS
+    let a: u8 = 7;
+    let op_1: u8 = a.count_zeroes();
+    println!("{:08b}", &a);
+    println!("{:?}", &op_1);
+
+    let a: u8 = 7;
+    let op_1: u8 = a.leading_zeros();
+    println!("{:08b}", &a);
+    println!("{:?}", &op_1);
+
+    let a: u8 = 7;
+    let op_1: u8 = a.leading_ones();
+    println!("{:08b}", &a);
+    println!("{:?}", &op_1);
+
+    let a: u8 = 7;
+    let op_1: u8 = a.trailing_zeros();
+    println!("{:08b}", &a);
+    println!("{:?}", &op_1);
+
+    let a: u8 = 7;
+    let op_1: u8 = a.trailing_ones();
+    println!("{:08b}", &a);
+    println!("{:?}", &op_1);
+
+
+
+
+
+
+
+
 
 bitand_assign
 &=
