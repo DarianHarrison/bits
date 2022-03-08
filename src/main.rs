@@ -1,5 +1,11 @@
 #[allow(unused_variables)]
 
+fn bit_permute_step(x: u32, m: u32, shift: u32) -> u32 {
+    let t: u32 = ((x >> shift) ^ x) & m;
+    let x: u32 = (x ^ t) ^ (t << shift);
+    x
+}
+
 fn main() {
 
     // AND, minimizes
@@ -83,6 +89,17 @@ fn main() {
     }
     println!("{:?}", &concat);
     println!("{:b}", &concat);
+
+    // bitwise permutation
+    let mut x: u32 = 123789;
+    println!("{:032b}", &x);
+    println!("{:?}", x.count_ones());
+    x = bit_permute_step(x, 0x22222222, 1);  // Bit index swap 0,1
+    x = bit_permute_step(x, 0x0c0c0c0c, 2);  // Bit index swap 1,2
+    x = bit_permute_step(x, 0x00f000f0, 4);  // Bit index swap 2,3
+    x = bit_permute_step(x, 0x0000ff00, 8);  // Bit index swap 3,4
+    println!("{:032b}", &x);
+    println!("{:?}", x.count_ones());
 
     ///////////////////////////////////
     ///////////////////////////////////
@@ -222,3 +239,4 @@ fn main() {
     println!("{:?}",13u8.saturating_sub(127));
 
 }
+
