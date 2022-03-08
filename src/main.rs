@@ -82,13 +82,14 @@ fn main() {
     // >>= // shr assign
 
     // bitwise concatenation
-    let mut concat:u32 = 3u32;
-    for _ in 0..4{
-        concat <<= 7;
-        concat |= 3u32;
+    let bitVector: Vec<u8> = vec![255,1,255,1];
+    let mut concat:u32 = bitVector[0] as u32;
+    for hask_k in bitVector {
+    	concat <<= 8;
+        concat |= hask_k as u32;
     }
+    println!("last {:32b}", &concat);
     println!("{:?}", &concat);
-    println!("{:b}", &concat);
 
     // bitwise permutation
     let mut x: u32 = 123789;
