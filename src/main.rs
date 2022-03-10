@@ -102,10 +102,15 @@ fn main() {
     println!("{:032b}", &x);
     println!("{:?}", x.count_ones());
 
-    // 2 to the power by shift
-    let d_pow: u32 = 24;
-    let d: u32 = 2 << (d_pow - 1);
-    println!("{:?}", d);
+    // base 2 powering with shift
+    let d_pow: u32 = 32; // this example is 2^32
+    let d: u32;
+    if d_pow == u32::BITS {
+        d = ((2 << (d_pow - 2)) - 1) + (2 << (d_pow - 2 ));
+    } else {
+        d = 2 << (d_pow - 1);
+    }
+    assert_eq!(d, u32::MAX);
 
     ///////////////////////////////////
     ///////////////////////////////////
