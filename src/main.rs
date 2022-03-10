@@ -106,7 +106,7 @@ fn main() {
     let d_pow: u32 = 32; // this example is 2^32
     let d: u32;
     if d_pow == u32::BITS {
-        d = ((2 << (d_pow - 2)) - 1) + (2 << (d_pow - 2 ));
+        d = u32::MAX;
     } else {
         d = 2 << (d_pow - 1);
     }
