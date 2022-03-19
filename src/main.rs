@@ -1,3 +1,4 @@
+#![feature(int_log)]
 #[allow(unused_variables)]
 
 fn bit_permute_step(x: u32, m: u32, shift: u32) -> u32 {
@@ -82,9 +83,9 @@ fn main() {
     // >>= // shr assign
 
     // bitwise concatenation
-    let bitVector: Vec<u8> = vec![255,1,255,1];
-    let mut concat:u32 = bitVector[0] as u32;
-    for hask_k in bitVector {
+    let bit_vector: Vec<u8> = vec![255,1,255,1];
+    let mut concat:u32 = bit_vector[0] as u32;
+    for hask_k in bit_vector {
     	concat <<= 8;
         concat |= hask_k as u32;
     }
@@ -232,6 +233,22 @@ fn main() {
     // NEXT POWER OF 2
     println!("{:?}", "// NEXT POWER OF 2: 12");
     println!("{:?}", 12u8.next_power_of_two());
+
+    // BASE 2 LOGARITHM
+    
+    // exact powers of 2
+    let a: u32 = 134217728u32.trailing_zeros(); // exact power of 2
+    println!("base_2_log: {:?}", a); 
+
+    // inexact powers of 2: floor
+    let a: u32 = 134217727u32.log2(); // not exact power of 2
+    println!("base_2_log: {:?}", a); 
+
+    // inexact powers of 2: ceil // not exact power of 2
+    let a: u32 = 134217727u32 - 1u32; // not exact power of 2
+    let a: u32 = a.log2() + 1;
+    println!("base_2_log: {:?}", a); 
+
 
     // MIN VALUE FOR TYPE, min
     println!("{:?}", "// MIN VALUE FOR TYPE u8");
