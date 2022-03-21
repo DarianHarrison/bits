@@ -10,7 +10,7 @@ fn bit_permute_step(x: u32, m: u32, shift: u32) -> u32 {
 fn main() {
 
     // AND, minimizes
-    let a: u8 = 12;
+    let a: u8 = 230;
     let b: u8 = 7;
     let op_1: u8 = a & b;
     println!("{:?}", "// AND");
@@ -19,7 +19,7 @@ fn main() {
     println!("{:08b}", &op_1);
 
     // OR, maximizes
-    let a: u8 = 12;
+    let a: u8 = 230;
     let b: u8 = 7;
     let op_1: u8 = a | b;
     println!("{:?}", "// OR");
@@ -28,7 +28,7 @@ fn main() {
     println!("{:08b}", &op_1);
 
     // XOR, find bitwise magnets
-    let a: u8 = 12;
+    let a: u8 = 230;
     let b: u8 = 7;
     let op_1: u8 = a ^ b;
     println!("{:?}", "// XOR");
