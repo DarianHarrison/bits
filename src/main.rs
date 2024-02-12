@@ -241,12 +241,12 @@ fn main() {
     println!("base_2_log: {:?}", a); 
 
     // inexact powers of 2: floor
-    let a: u32 = 134217727u32.log2(); // not exact power of 2
+    let a: u32 = 134217727u32.ilog2(); // not exact power of 2
     println!("base_2_log: {:?}", a); 
 
     // inexact powers of 2: ceil // not exact power of 2
     let a: u32 = 134217727u32 - 1u32; // not exact power of 2
-    let a: u32 = a.log2() + 1;
+    let a: u32 = a.ilog2() + 1;
     println!("base_2_log: {:?}", a); 
 
 
@@ -265,6 +265,58 @@ fn main() {
     // SATURATING SUBSTRACTION, min if overflows
     println!("{:?}", "// SATURATING SUBSTRACTION: 13 - 127 for u8");
     println!("{:?}",13u8.saturating_sub(127));
+
+
+    ///////////////////////////////////
+    ///////////////////////////////////
+    ///////////////////////////////////
+
+    // Fisher Yates random bitwise permutation
+
+    use rand::{SeedableRng};
+    use rand::rngs::SmallRng;
+    use rand::seq::SliceRandom;
+    use rand::Rng;
+
+
+    fn swap_bits(n: u32, p1: u32, p2: u32) -> u32 {
+        let bit1 = (n >> p1) & 1;
+        let bit2 = (n >> p2) & 1;
+        let x = (bit1 ^ bit2);
+        let x = (x << p1) | (x << p2);
+        n ^ x
+    }
+
+    // TODO: global and seedable RNG init
+    pub fn get_rand_u32_range_seeded(seed: u32, x: u32, y: u32) -> u32 {
+
+        let seed: u64 = seed as u64;
+
+        // This is cached and done only once per thread.
+        let mut small_rng = SmallRng::seed_from_u64(seed);
+
+        let rand_num: u32 = small_rng.gen_range(x..y);
+        rand_num
+    }
+
+    fn bitwise_fisher_yates(d: u32) -> u32 {
+
+        // add some entropy based on HW RNG
+        let seed: u32 = 113;
+        let mut d: u32 = d;
+
+        for i in (1..32).rev() {
+            let j: u32 = get_rand_u32_range_seeded(seed,0,i);
+            d = swap_bits(d, i, j);
+        }
+        d
+    }
+
+    let d: u32 = 123456;
+    println!("Original {:032b}", &d);
+    let permuted: u32 = bitwise_fisher_yates(d);
+    println!("Permuted {:032b}", &permuted);
+    assert_eq!(d.count_ones(), permuted.count_ones());
 
 }
 
