@@ -266,7 +266,17 @@ fn main() {
     println!("{:?}", "// SATURATING SUBSTRACTION: 13 - 127 for u8");
     println!("{:?}",13u8.saturating_sub(127));
 
+    
+    // toggle bit on and off at bit position N
+    let mut x: u32 = 16122;
+    println!("{:16b}", &x);
 
+    let bit_position: usize = 0;
+    x ^= (1 << bit_position);
+    println!("{:16b}", &x);
+    x ^= (1 << bit_position);
+    println!("{:16b}", &x);
+    
     ///////////////////////////////////
     ///////////////////////////////////
     ///////////////////////////////////
